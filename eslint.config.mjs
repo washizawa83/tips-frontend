@@ -30,6 +30,6 @@ export default [
       "import/no-anonymous-default-export": 'off',
     },
   },
-  // ...tseslint.configs.recommended,
-  // pluginReactConfig,
+  ...tseslint.configs.recommended,
+  pluginReactConfig,
 ];
