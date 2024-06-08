@@ -1,18 +1,43 @@
-import InboxIcon from '@mui/icons-material/MoveToInbox';
+import HomeIcon from '@mui/icons-material/Home';
+import LinkIcon from '@mui/icons-material/Link';
+import TerminalIcon from '@mui/icons-material/Terminal';
+import TimelineIcon from '@mui/icons-material/Timeline';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
 import * as React from 'react';
+import { theme } from '../../themes/theme';
+import { AnchorLink, AnchorLinkProps } from '../ui/anchor-link';
 
 const drawerWidth = 240;
 interface Props {
     children: React.ReactNode;
     detectionOpenSidebarEmit: boolean;
 }
+
+const sidebarNavItem: AnchorLinkProps[] = [
+    {
+        text: 'ホーム',
+        link: '#',
+        icon: <HomeIcon />,
+    },
+    {
+        text: '投稿',
+        link: '#',
+        icon: <TerminalIcon />,
+    },
+    {
+        text: 'タイムライン',
+        link: '#',
+        icon: <TimelineIcon />,
+    },
+    {
+        text: 'グローバルリンク',
+        link: '#',
+        icon: <LinkIcon />,
+    },
+];
 
 export const Sidebar = ({ children, detectionOpenSidebarEmit }: Props) => {
     const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -39,12 +64,17 @@ export const Sidebar = ({ children, detectionOpenSidebarEmit }: Props) => {
     const drawer = (
         <div>
             <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text) => (
-                    <ListItem key={text} disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>{<InboxIcon />}</ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItemButton>
+                {sidebarNavItem.map((navItem) => (
+                    <ListItem
+                        sx={{ marginTop: '32px', padding: '0 20px' }}
+                        key={navItem.text}
+                        disablePadding
+                    >
+                        <AnchorLink
+                            text={navItem.text}
+                            link={navItem.link}
+                            icon={navItem.icon}
+                        />
                     </ListItem>
                 ))}
             </List>
@@ -84,6 +114,7 @@ export const Sidebar = ({ children, detectionOpenSidebarEmit }: Props) => {
                             boxSizing: 'border-box',
                             width: drawerWidth,
                             top: '40px',
+                            backgroundColor: theme.palette.primary.dark,
                         },
                     }}
                     open
