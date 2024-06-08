@@ -1,12 +1,13 @@
 {
   "lineWidth": 80,
-  "indentWidth": 4,
   "typescript": {
+    "indentWidth": 4,
     "quoteStyle": "alwaysSingle",
     "arrowFunction.useParentheses": "force",
     "binaryExpression.linePerExpression": false
   },
   "json": {
+    "indentWidth": 2
   },
   "markdown": {
   },
