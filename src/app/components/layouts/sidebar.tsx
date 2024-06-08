@@ -10,9 +10,8 @@ import * as React from 'react';
 import { theme } from '../../themes/theme';
 import { AnchorLink, AnchorLinkProps } from '../ui/anchor-link';
 
-const drawerWidth = 240;
 interface Props {
-    children: React.ReactNode;
+    drawerWidth: number;
     detectionOpenSidebarEmit: boolean;
 }
 
@@ -39,7 +38,7 @@ const sidebarNavItem: AnchorLinkProps[] = [
     },
 ];
 
-export const Sidebar = ({ children, detectionOpenSidebarEmit }: Props) => {
+export const Sidebar = ({ drawerWidth, detectionOpenSidebarEmit }: Props) => {
     const [mobileOpen, setMobileOpen] = React.useState(false);
     const [isClosing, setIsClosing] = React.useState(false);
     React.useEffect(() => {
@@ -82,7 +81,7 @@ export const Sidebar = ({ children, detectionOpenSidebarEmit }: Props) => {
     );
 
     return (
-        <Box sx={{ display: 'flex' }}>
+        <Box>
             <Box
                 component='nav'
                 sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
@@ -101,6 +100,7 @@ export const Sidebar = ({ children, detectionOpenSidebarEmit }: Props) => {
                         '& .MuiDrawer-paper': {
                             boxSizing: 'border-box',
                             width: drawerWidth,
+                            backgroundColor: theme.palette.primary.dark,
                         },
                     }}
                 >
@@ -121,16 +121,6 @@ export const Sidebar = ({ children, detectionOpenSidebarEmit }: Props) => {
                 >
                     {drawer}
                 </Drawer>
-            </Box>
-            <Box
-                component='main'
-                sx={{
-                    flexGrow: 1,
-                    p: 3,
-                    width: { sm: `calc(100% - ${drawerWidth}px)` },
-                }}
-            >
-                {children}
             </Box>
         </Box>
     );
