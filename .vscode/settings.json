@@ -1,7 +1,7 @@
 {
-    "editor.defaultFormatter": "dprint.dprint",
-    "editor.formatOnSave": true,
-    "[typescriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
+  "editor.defaultFormatter": "dprint.dprint",
+  "editor.formatOnSave": true,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
