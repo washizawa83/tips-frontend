@@ -4,6 +4,7 @@ import tsParser from '@typescript-eslint/parser';
 import pluginReactConfig from "eslint-plugin-react/configs/recommended.js";
 
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default [
   {
     languageOptions: {
@@ -22,6 +23,8 @@ export default [
         version: 'detect', // Reactのバージョンを自動的に検出
       },
     },
+    ...tseslint.configs.recommended,
+    pluginReactConfig,
     rules: {
       'no-unused-vars': 'warn',
       'no-undef': 'warn',
@@ -29,6 +32,4 @@ export default [
       "import/no-anonymous-default-export": 'off',
     },
   },
-  ...tseslint.configs.recommended,
-  pluginReactConfig,
 ];

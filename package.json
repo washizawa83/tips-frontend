@@ -3,8 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@material-tailwind/react": "^2.1.9",
+    "@mui/icons-material": "^5.15.19",
+    "@mui/material": "^5.15.19",
     "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.98",
@@ -12,6 +16,7 @@
     "@types/react-dom": "^18.3.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-router-dom": "^6.23.1",
     "react-scripts": "5.0.1",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
@@ -43,16 +48,23 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@testing-library/react": "^15.0.6",
+    "autoprefixer": "^10.4.19",
     "dprint": "^0.46.1",
     "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.34.2",
     "globals": "^15.3.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.5",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.4",
     "typescript-eslint": "^7.12.0"
   },
   "lint-staged": {
-    "src/**/*.{ts,tsx}": ["eslint --fix", "dprint fmt"],
+    "src/**/*.{ts,tsx}": [
+      "eslint --fix",
+      "dprint fmt"
+    ],
     "src/**/*.{js,jsx,ts,tsx,json,css,scss}": "dprint fmt"
   }
 }
