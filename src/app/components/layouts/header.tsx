@@ -4,6 +4,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { Box, IconButton, List, ListItem } from '@mui/material';
 import React from 'react';
+import { theme } from '../../themes/theme';
 import { AnchorLink, AnchorLinkProps } from '../ui/anchor-link';
 
 const iconColor = '#F1F0FA';
@@ -39,10 +40,10 @@ type HeaderProps = {
 export const Header = (props: HeaderProps) => {
     const onClickMenuButton = () => props.openSidebarEmit();
     return (
-        <div className='bg-tips-gray'>
-            <div className='flex justify-between place-items-center max-w-screen-2xl h-10 px-2.5'>
-                <div style={logoStyle}></div>
-                <div>
+        <Box sx={{ backgroundColor: theme.palette.primary.light }}>
+            <Box className='flex justify-between place-items-center h-10 px-2.5'>
+                <Box style={logoStyle}></Box>
+                <Box>
                     <Box
                         component='nav'
                         sx={{ display: { xs: 'none', sm: 'block' } }}
@@ -72,8 +73,8 @@ export const Header = (props: HeaderProps) => {
                             <MenuIcon />
                         </IconButton>
                     </Box>
-                </div>
-            </div>
-        </div>
+                </Box>
+            </Box>
+        </Box>
     );
 };

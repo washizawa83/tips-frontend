@@ -23,6 +23,8 @@ export default [
         version: 'detect', // Reactのバージョンを自動的に検出
       },
     },
+    ...tseslint.configs.recommended,
+    pluginReactConfig,
     rules: {
       'no-unused-vars': 'warn',
       'no-undef': 'warn',
@@ -30,6 +32,4 @@ export default [
       "import/no-anonymous-default-export": 'off',
     },
   },
-  ...tseslint.configs.recommended,
-  pluginReactConfig,
 ];

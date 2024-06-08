@@ -66,9 +66,9 @@ export const Sidebar = ({ children, detectionOpenSidebarEmit }: Props) => {
             <List>
                 {sidebarNavItem.map((navItem) => (
                     <ListItem
-                        sx={{ marginTop: '32px', padding: '0 20px' }}
                         key={navItem.text}
                         disablePadding
+                        className='mt-10 px-7'
                     >
                         <AnchorLink
                             text={navItem.text}
