@@ -100,7 +100,7 @@ export const Sidebar = ({ drawerWidth, detectionOpenSidebarEmit }: Props) => {
                         '& .MuiDrawer-paper': {
                             boxSizing: 'border-box',
                             width: drawerWidth,
-                            backgroundColor: theme.palette.primary.dark,
+                            backgroundColor: theme.palette.primary.main,
                         },
                     }}
                 >
@@ -114,7 +114,7 @@ export const Sidebar = ({ drawerWidth, detectionOpenSidebarEmit }: Props) => {
                             boxSizing: 'border-box',
                             width: drawerWidth,
                             top: '40px',
-                            backgroundColor: theme.palette.primary.dark,
+                            backgroundColor: theme.palette.primary.main,
                         },
                     }}
                     open

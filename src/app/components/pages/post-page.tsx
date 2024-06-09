@@ -1,3 +1,6 @@
 import React from 'react';
+import { Editor } from '../editor/editor';
 
-export const PostPage = () => {};
+export const PostPage = () => {
+    return <Editor />;
+};
