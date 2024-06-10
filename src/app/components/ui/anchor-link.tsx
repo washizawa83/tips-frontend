@@ -2,8 +2,8 @@ import Link from '@mui/material/Link';
 import React from 'react';
 import { theme } from '../../themes/theme';
 export type AnchorLinkProps = {
-    text: string;
     link: string;
+    text?: string;
     icon?: JSX.Element;
 };
 

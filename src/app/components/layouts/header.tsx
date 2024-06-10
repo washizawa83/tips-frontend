@@ -7,20 +7,17 @@ import React from 'react';
 import { theme } from '../../themes/theme';
 import { AnchorLink, AnchorLinkProps } from '../ui/anchor-link';
 
-const iconColor = '#F1F0FA';
+const iconColor = '#dcd9e7';
 const anchorLinkProps: AnchorLinkProps[] = [
     {
-        text: '通知',
         link: '#',
         icon: <NotificationsIcon sx={{ color: iconColor }} />,
     },
     {
-        text: '設定',
         link: '#',
         icon: <SettingsIcon sx={{ color: iconColor }} />,
     },
     {
-        text: 'ログアウト',
         link: '#',
         icon: <LogoutIcon sx={{ color: iconColor }} />,
     },
