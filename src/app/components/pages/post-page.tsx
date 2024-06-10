@@ -4,13 +4,15 @@ import { Editor } from '../editor/editor';
 import { loadData } from '../editor/loadData';
 import { BaseTextField } from '../ui/base-text-field';
 
+const contentWidth = 800;
+
 export const PostPage = () => {
     const tips = loadData();
     return (
         <Box>
             <Editor editable={true} />
-            <Box sx={{ width: '800px', margin: '80px auto 50px' }}>
-                <BaseTextField width={800} label='Search' />
+            <Box sx={{ width: `${contentWidth}px`, margin: '80px auto 50px' }}>
+                <BaseTextField width={contentWidth} label='Search' />
             </Box>
             <Box>
                 {tips.map((tip, index) => (
