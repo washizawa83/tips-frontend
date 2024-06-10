@@ -8,7 +8,8 @@ type BaseTextFieldProps = {
 
 export const BaseTextField = ({ width, label }: BaseTextFieldProps) => {
     const textFieldStyle = {
-        width: width,
+        maxWidth: width,
+        width: '100%',
         '& .MuiInputBase-input': {
             color: '#e0d8f5',
         },

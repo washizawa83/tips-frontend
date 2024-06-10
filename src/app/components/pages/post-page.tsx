@@ -11,7 +11,12 @@ export const PostPage = () => {
     return (
         <Box>
             <Editor editable={true} />
-            <Box sx={{ width: `${contentWidth}px`, margin: '80px auto 50px' }}>
+            <Box
+                sx={{
+                    maxWidth: `${contentWidth}px`,
+                    margin: '80px auto 50px',
+                }}
+            >
                 <BaseTextField width={contentWidth} label='Search' />
             </Box>
             <Box>
