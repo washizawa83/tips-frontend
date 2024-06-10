@@ -18,12 +18,12 @@ interface Props {
 const sidebarNavItem: AnchorLinkProps[] = [
     {
         text: 'ホーム',
-        link: '#',
+        link: '/',
         icon: <HomeIcon />,
     },
     {
         text: '投稿',
-        link: '#',
+        link: '/post',
         icon: <TerminalIcon />,
     },
     {
