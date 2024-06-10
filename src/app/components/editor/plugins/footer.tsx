@@ -1,9 +1,8 @@
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
-import { Height } from '@mui/icons-material';
 import SendIcon from '@mui/icons-material/Send';
-import { Box, Button, IconButton, TextField } from '@mui/material';
+import { Box, IconButton } from '@mui/material';
 import { FC } from 'react';
-import { BaseTextField } from '../../ui/base-text-field';
+import { BaseTextField } from '../../ui/BaseTextField';
 
 function downloadJSON(data: string, filename = 'data.json') {
     const blob = new Blob([data], { type: 'application/json' });

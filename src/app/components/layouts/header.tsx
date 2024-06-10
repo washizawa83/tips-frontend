@@ -5,7 +5,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import { Box, IconButton, List, ListItem } from '@mui/material';
 import React from 'react';
 import { theme } from '../../themes/theme';
-import { AnchorLink, AnchorLinkProps } from '../ui/anchor-link';
+import { AnchorLink, AnchorLinkProps } from '../ui/AnchorLink';
 
 const iconColor = '#dcd9e7';
 const anchorLinkProps: AnchorLinkProps[] = [

@@ -1,8 +1,8 @@
 import { Box } from '@mui/material';
 import React from 'react';
-import { Editor } from '../editor/editor';
+import { Editor } from '../editor/Editor';
 import { loadData } from '../editor/loadData';
-import { BaseTextField } from '../ui/base-text-field';
+import { BaseTextField } from '../ui/BaseTextField';
 
 const contentWidth = 800;
 

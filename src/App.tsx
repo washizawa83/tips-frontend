@@ -3,8 +3,8 @@ import './App.css';
 import { Box } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Layout } from './app/components/layouts/layout';
-import { PostPage } from './app/components/pages/post-page';
+import { Layout } from './app/components/layouts/Layout';
+import { PostPage } from './app/components/pages/PostPage';
 import { theme } from './app/themes/theme';
 
 function App() {

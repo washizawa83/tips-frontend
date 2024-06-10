@@ -8,14 +8,14 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import * as React from 'react';
 import { theme } from '../../themes/theme';
-import { AnchorLink, AnchorLinkProps } from '../ui/anchor-link';
+import { AnchorLink, AnchorLinkProps } from '../ui/AnchorLink';
 
 interface Props {
     drawerWidth: number;
     detectionOpenSidebarEmit: boolean;
 }
 
-const sidebarNavItem: AnchorLinkProps[] = [
+const SidebarNavItem: AnchorLinkProps[] = [
     {
         text: 'ホーム',
         link: '/',
@@ -63,7 +63,7 @@ export const Sidebar = ({ drawerWidth, detectionOpenSidebarEmit }: Props) => {
     const drawer = (
         <div>
             <List>
-                {sidebarNavItem.map((navItem) => (
+                {SidebarNavItem.map((navItem) => (
                     <ListItem
                         key={navItem.text}
                         disablePadding

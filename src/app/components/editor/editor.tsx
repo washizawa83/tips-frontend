@@ -6,12 +6,12 @@ import { ContentEditable } from '@lexical/react/LexicalContentEditable';
 import LexicalErrorBoundary from '@lexical/react/LexicalErrorBoundary';
 import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin';
 import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
-import { CodeHighlightPlugin } from './plugins/code-highlight';
+import { CodeHighlightPlugin } from './plugins/CodeHighlight';
 
 import { createEditor } from 'lexical';
 import { nodes } from './node';
-import { FooterPlugin } from './plugins/footer';
-import { ToolbarPlugin } from './plugins/toolbar';
+import { FooterPlugin } from './plugins/Footer';
+import { ToolbarPlugin } from './plugins/Toolbar';
 import ExampleTheme from './theme';
 
 function Placeholder() {
