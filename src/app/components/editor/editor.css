@@ -367,7 +367,7 @@
   }
   
   .toolbar .toolbar-item:hover:not([disabled]) {
-	background-color: #eee;
+	background-color: #8976c27a;
   }
   
   .toolbar .divider {
