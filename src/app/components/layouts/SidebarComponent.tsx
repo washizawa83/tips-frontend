@@ -8,7 +8,10 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import * as React from 'react';
 import { theme } from '../../themes/theme';
-import { AnchorLink, AnchorLinkProps } from '../ui/AnchorLink';
+import {
+    AnchorLinkComponent,
+    AnchorLinkProps,
+} from '../ui/AnchorLinkComponent';
 
 interface Props {
     drawerWidth: number;
@@ -38,7 +41,9 @@ const SidebarNavItem: AnchorLinkProps[] = [
     },
 ];
 
-export const Sidebar = ({ drawerWidth, detectionOpenSidebarEmit }: Props) => {
+export const SidebarComponent = (
+    { drawerWidth, detectionOpenSidebarEmit }: Props,
+) => {
     const [mobileOpen, setMobileOpen] = React.useState(false);
     const [isClosing, setIsClosing] = React.useState(false);
     React.useEffect(() => {
@@ -69,7 +74,7 @@ export const Sidebar = ({ drawerWidth, detectionOpenSidebarEmit }: Props) => {
                         disablePadding
                         className='mt-10 px-7'
                     >
-                        <AnchorLink
+                        <AnchorLinkComponent
                             text={navItem.text}
                             link={navItem.link}
                             icon={navItem.icon}

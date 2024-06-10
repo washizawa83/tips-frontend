@@ -39,7 +39,7 @@ import {
     RxTextAlignJustify,
     RxTextAlignLeft,
 } from 'react-icons/rx';
-import { CODE_LANGUAGE_COMMAND } from './CodeHighlight';
+import { CODE_LANGUAGE_COMMAND } from './CodeHighlightPlugin';
 
 const LowPriority = 1;
 

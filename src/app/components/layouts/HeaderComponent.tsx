@@ -5,7 +5,10 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import { Box, IconButton, List, ListItem } from '@mui/material';
 import React from 'react';
 import { theme } from '../../themes/theme';
-import { AnchorLink, AnchorLinkProps } from '../ui/AnchorLink';
+import {
+    AnchorLinkComponent,
+    AnchorLinkProps,
+} from '../ui/AnchorLinkComponent';
 
 const iconColor = '#dcd9e7';
 const anchorLinkProps: AnchorLinkProps[] = [
@@ -34,7 +37,7 @@ type HeaderProps = {
     openSidebarEmit: () => void;
 };
 
-export const Header = (props: HeaderProps) => {
+export const HeaderComponent = (props: HeaderProps) => {
     const onClickMenuButton = () => props.openSidebarEmit();
     return (
         <Box sx={{ backgroundColor: theme.palette.primary.light }}>
@@ -51,7 +54,7 @@ export const Header = (props: HeaderProps) => {
                                     key={index}
                                     sx={{ marginLeft: 2, whiteSpace: 'nowrap' }}
                                 >
-                                    <AnchorLink
+                                    <AnchorLinkComponent
                                         text={props.text}
                                         link={props.link}
                                         icon={props.icon}

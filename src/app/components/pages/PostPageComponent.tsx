@@ -1,27 +1,27 @@
 import { Box } from '@mui/material';
 import React from 'react';
-import { Editor } from '../editor/Editor';
+import { EditorComponent } from '../editor/EditorComponent';
 import { loadData } from '../editor/loadData';
-import { BaseTextField } from '../ui/BaseTextField';
+import { TextFieldComponent } from '../ui/TextFieldComponent';
 
 const contentWidth = 800;
 
-export const PostPage = () => {
+export const PostPageComponent = () => {
     const tips = loadData();
     return (
         <Box>
-            <Editor editable={true} />
+            <EditorComponent editable={true} />
             <Box
                 sx={{
                     maxWidth: `${contentWidth}px`,
                     margin: '80px auto 50px',
                 }}
             >
-                <BaseTextField width={contentWidth} label='Search' />
+                <TextFieldComponent width={contentWidth} label='Search' />
             </Box>
             <Box>
                 {tips.map((tip, index) => (
-                    <Editor
+                    <EditorComponent
                         key={index}
                         editable={false}
                         initialEditorText={tip}
