@@ -7,7 +7,7 @@ export type AnchorLinkProps = {
     icon?: JSX.Element;
 };
 
-export const AnchorLink = (props: AnchorLinkProps) => {
+export const AnchorLinkComponent = (props: AnchorLinkProps) => {
     return (
         <Link
             className='text-tips-gray-text text-base font-medium'

@@ -6,12 +6,12 @@ import { ContentEditable } from '@lexical/react/LexicalContentEditable';
 import LexicalErrorBoundary from '@lexical/react/LexicalErrorBoundary';
 import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin';
 import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
-import { CodeHighlightPlugin } from './plugins/code-highlight';
+import { CodeHighlightPlugin } from './plugins/CodeHighlightPlugin';
 
 import { createEditor } from 'lexical';
 import { nodes } from './node';
-import { FooterPlugin } from './plugins/footer';
-import { ToolbarPlugin } from './plugins/toolbar';
+import { FooterPlugin } from './plugins/FooterPlugin';
+import { ToolbarPlugin } from './plugins/ToolbarPlugin';
 import ExampleTheme from './theme';
 
 function Placeholder() {
@@ -20,7 +20,9 @@ function Placeholder() {
 
 type EditorProps = { editable: boolean; initialEditorText?: string };
 
-export const Editor = ({ editable, initialEditorText }: EditorProps) => {
+export const EditorComponent = (
+    { editable, initialEditorText }: EditorProps,
+) => {
     const initialEditorConfig = {
         editable: editable,
         namespace: 'React.js Demo',

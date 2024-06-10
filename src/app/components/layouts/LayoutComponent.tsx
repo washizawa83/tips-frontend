@@ -2,23 +2,23 @@ import { Box } from '@mui/material';
 import React from 'react';
 import { ReactNode, useState } from 'react';
 import { theme } from '../../themes/theme';
-import { Header } from './header';
-import { Sidebar } from './sidebar';
+import { HeaderComponent } from './HeaderComponent';
+import { SidebarComponent } from './SidebarComponent';
 
 interface Props {
     children: ReactNode;
 }
 const drawerWidth = 240;
 
-export const Layout = ({ children }: Props) => {
+export const LayoutComponent = ({ children }: Props) => {
     const [eventDetection, setEventDetection] = useState(false);
     const handleOpenSidebarEmit = () => setEventDetection(!eventDetection);
 
     return (
         <Box>
-            <Header openSidebarEmit={handleOpenSidebarEmit} />
+            <HeaderComponent openSidebarEmit={handleOpenSidebarEmit} />
             <Box sx={{ display: 'flex' }}>
-                <Sidebar
+                <SidebarComponent
                     drawerWidth={drawerWidth}
                     detectionOpenSidebarEmit={eventDetection}
                 />

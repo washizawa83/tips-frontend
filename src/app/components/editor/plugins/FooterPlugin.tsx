@@ -1,9 +1,8 @@
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
-import { Height } from '@mui/icons-material';
 import SendIcon from '@mui/icons-material/Send';
-import { Box, Button, IconButton, TextField } from '@mui/material';
+import { Box, IconButton } from '@mui/material';
 import { FC } from 'react';
-import { BaseTextField } from '../../ui/base-text-field';
+import { TextFieldComponent } from '../../ui/TextFieldComponent';
 
 function downloadJSON(data: string, filename = 'data.json') {
     const blob = new Blob([data], { type: 'application/json' });
@@ -42,7 +41,7 @@ export const FooterPlugin: FC = () => {
                 padding: '20px',
             }}
         >
-            <BaseTextField width={300} label='Tags' />
+            <TextFieldComponent width={300} label='Tags' />
             <IconButton aria-label='delete' onClick={() => postTips()}>
                 <SendIcon sx={{ fontSize: 20, color: '#c3b0fa' }} />
             </IconButton>
