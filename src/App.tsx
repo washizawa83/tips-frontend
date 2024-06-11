@@ -4,6 +4,7 @@ import { Box } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { LayoutComponent } from './app/components/layouts/LayoutComponent';
+import { HomePageComponent } from './app/components/pages/HomePageComponent';
 import { PostPageComponent } from './app/components/pages/PostPageComponent';
 import { theme } from './app/themes/theme';
 
@@ -14,7 +15,7 @@ function App() {
                 <BrowserRouter>
                     <LayoutComponent>
                         <Routes>
-                            <Route path='/' element={<h1>ホーム</h1>} />
+                            <Route path='/' element={<HomePageComponent />} />
                             <Route
                                 path='/post'
                                 element={<PostPageComponent />}
