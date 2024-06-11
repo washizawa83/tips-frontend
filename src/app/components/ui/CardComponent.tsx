@@ -4,10 +4,11 @@ import { theme } from '../../themes/theme';
 
 type CardProps = {
     title: string;
+    tips: number;
     image?: string;
 };
 
-export const CardComponent = ({ title, image }: CardProps) => {
+export const CardComponent = ({ title, tips, image }: CardProps) => {
     return (
         <Card
             sx={{
@@ -40,7 +41,7 @@ export const CardComponent = ({ title, image }: CardProps) => {
                     component='div'
                     sx={{ fontSize: '14px' }}
                 >
-                    {'tips: 30'}
+                    {`tips: ${tips}`}
                 </Typography>
             </CardContent>
         </Card>
