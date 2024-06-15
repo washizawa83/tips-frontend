@@ -18,10 +18,14 @@ function Placeholder() {
     return <div className='editor-placeholder'>Please Enter Text ...</div>;
 }
 
-type EditorProps = { editable: boolean; initialEditorText?: string };
+type EditorProps = {
+    editable: boolean;
+    initialEditorText?: string;
+    postData: (postData: string) => void;
+};
 
 export const EditorComponent = (
-    { editable, initialEditorText }: EditorProps,
+    { editable, initialEditorText, postData }: EditorProps,
 ) => {
     const initialEditorConfig = {
         editable: editable,
@@ -45,6 +49,8 @@ export const EditorComponent = (
         return readOnlyEditorConfig;
     };
 
+    const handlePostData = (data: string) => postData(data);
+
     return (
         <LexicalComposer initialConfig={createEditorConfig()}>
             <div className='editor-container'>
@@ -61,7 +67,7 @@ export const EditorComponent = (
                     <AutoFocusPlugin />
                     <CodeHighlightPlugin />
                 </div>
-                {editable && <FooterPlugin />}
+                {editable && <FooterPlugin handlePostData={handlePostData} />}
             </div>
         </LexicalComposer>
     );

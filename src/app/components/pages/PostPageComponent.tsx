@@ -1,23 +1,22 @@
 import { Box } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
 import { EditorComponent } from '../editor/EditorComponent';
 import { loadData } from '../editor/loadData';
 import { TextFieldComponent } from '../ui/TextFieldComponent';
-
-const contentWidth = 800;
+import { BasePageComponent } from './BasePageComponent';
 
 export const PostPageComponent = () => {
-    const tips = loadData();
+    const [tips, setTips] = useState(loadData());
+
+    const postData = (newData: string) => {
+        console.log([newData, ...tips]);
+        setTips([...tips, newData]);
+    };
     return (
-        <Box>
-            <EditorComponent editable={true} />
-            <Box
-                sx={{
-                    maxWidth: `${contentWidth}px`,
-                    margin: '80px auto 50px',
-                }}
-            >
-                <TextFieldComponent width={contentWidth} label='Search' />
+        <BasePageComponent>
+            <EditorComponent editable={true} postData={postData} />
+            <Box sx={{ margin: '80px 0 60px' }}>
+                <TextFieldComponent label='Search' />
             </Box>
             <Box>
                 {tips.map((tip, index) => (
@@ -25,9 +24,10 @@ export const PostPageComponent = () => {
                         key={index}
                         editable={false}
                         initialEditorText={tip}
+                        postData={postData}
                     />
                 ))}
             </Box>
-        </Box>
+        </BasePageComponent>
     );
 };

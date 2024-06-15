@@ -17,7 +17,11 @@ function downloadJSON(data: string, filename = 'data.json') {
     URL.revokeObjectURL(url);
 }
 
-export const FooterPlugin: FC = () => {
+type Props = {
+    handlePostData: (postData: string) => void;
+};
+
+export const FooterPlugin: FC<Props> = ({ handlePostData }: Props) => {
     const [editor] = useLexicalComposerContext();
 
     const postTips = () => {
@@ -29,7 +33,7 @@ export const FooterPlugin: FC = () => {
         console.log(parseEditorState);
 
         const jsonString = JSON.stringify(editorState.toJSON());
-        downloadJSON(jsonString);
+        handlePostData(jsonString);
     };
 
     return (

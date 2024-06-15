@@ -1,7 +1,10 @@
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import React from 'react';
+import { theme } from '../../themes/theme';
 import { CardComponent } from '../ui/CardComponent';
 import { HeadlineComponent } from '../ui/HeadlineComponent';
+import { ThreeColumnListComponent } from '../ui/ThreeColumnListComponent';
+import { BasePageComponent } from './BasePageComponent';
 
 const tags = [
     {
@@ -38,30 +41,28 @@ const tags = [
 
 export const HomePageComponent = () => {
     return (
-        <Box sx={{ maxWidth: '800px', margin: '0 auto' }}>
+        <BasePageComponent>
             <HeadlineComponent text='Tags' />
-            <Box
-                sx={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    flexWrap: 'wrap',
-                    '&::after': {
-                        content: '""',
-                        display: 'block',
-                        width: '30%',
-                    },
-                }}
-            >
+            <ThreeColumnListComponent>
                 {tags.map((tag) => (
                     <Box sx={{ margin: '20px 0', width: '30%' }}>
                         <CardComponent
                             title={tag.name}
-                            tips={tag.tips}
                             image={tag.image}
-                        />
+                        >
+                            <Typography
+                                color={theme.palette.primary.contrastText}
+                                gutterBottom
+                                variant='h6'
+                                component='div'
+                                sx={{ fontSize: '14px' }}
+                            >
+                                {`tips: ${tag.tips}`}
+                            </Typography>
+                        </CardComponent>
                     </Box>
                 ))}
-            </Box>
-        </Box>
+            </ThreeColumnListComponent>
+        </BasePageComponent>
     );
 };

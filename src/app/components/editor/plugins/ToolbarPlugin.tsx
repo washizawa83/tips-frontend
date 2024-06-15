@@ -22,7 +22,15 @@ import {
     SELECTION_CHANGE_COMMAND,
     UNDO_COMMAND,
 } from 'lexical';
-import { FC, useCallback, useEffect, useRef, useState } from 'react';
+import {
+    FC,
+    ReactElement,
+    useCallback,
+    useEffect,
+    useRef,
+    useState,
+} from 'react';
+import { IconType } from 'react-icons';
 import { LiaRedoAltSolid, LiaUndoAltSolid } from 'react-icons/lia';
 import {
     PiTextBBold,
@@ -38,6 +46,7 @@ import {
     RxTextAlignCenter,
     RxTextAlignJustify,
     RxTextAlignLeft,
+    RxTextAlignRight,
 } from 'react-icons/rx';
 import { CODE_LANGUAGE_COMMAND } from './CodeHighlightPlugin';
 
@@ -58,7 +67,25 @@ const SupportedBlockType = {
     code: 'Code Block',
     textCode: 'Text Code',
 } as const;
+
+type FormatTextTools = {
+    name: 'bold' | 'italic' | 'underline' | 'strikethrough';
+    state: boolean;
+    icon: ReactElement<IconType>;
+};
+
+type FormatAlignTools = {
+    name: 'left' | 'right' | 'center' | 'justify';
+    icon: ReactElement<IconType>;
+};
+
+type FormatHeadingTools = {
+    name: 'h1' | 'h2' | 'h3';
+    icon: ReactElement<IconType>;
+};
+
 type BlockType = keyof typeof SupportedBlockType;
+
 const CodeLanguagesOptions = Object.entries(
     CODE_LANGUAGE_FRIENDLY_NAME_MAP,
 ).map(([value, label]) => ({ value, label }));
@@ -125,18 +152,18 @@ export const ToolbarPlugin: FC = () => {
 
     const formatHeading = useCallback(
         (type: HeadingTagType) => {
-            if (blockType !== type) {
-                editor.update(() => {
-                    const selection = $getSelection();
-                    if ($isRangeSelection(selection)) {
-                        $setBlocksType(
-                            selection,
-                            () => $createHeadingNode(type),
-                        );
-                    }
-                });
-                setBlockType(type);
-            }
+            if (blockType === type) return;
+
+            editor.update(() => {
+                const selection = $getSelection();
+                if (!$isRangeSelection(selection)) return;
+
+                $setBlocksType(
+                    selection,
+                    () => $createHeadingNode(type),
+                );
+            });
+            setBlockType(type);
         },
         [blockType, editor],
     );
@@ -181,6 +208,63 @@ export const ToolbarPlugin: FC = () => {
         }
     }, [blockType, editor]);
 
+    const formatTextTools: FormatTextTools[] = [
+        {
+            name: 'bold',
+            state: isBold,
+            icon: <PiTextBBold />,
+        },
+        {
+            name: 'italic',
+            state: isItalic,
+            icon: <PiTextItalicBold />,
+        },
+        {
+            name: 'underline',
+            state: isUnderline,
+            icon: <PiTextUnderlineBold />,
+        },
+        {
+            name: 'strikethrough',
+            state: isStrikethrough,
+            icon: <PiTextStrikethroughBold />,
+        },
+    ];
+
+    const formatAlignTools: FormatAlignTools[] = [
+        {
+            name: 'left',
+            icon: <RxTextAlignLeft />,
+        },
+        {
+            name: 'center',
+            icon: <RxTextAlignCenter />,
+        },
+        {
+            name: 'right',
+            icon: <RxTextAlignRight />,
+        },
+        {
+            name: 'justify',
+            icon: <RxTextAlignJustify />,
+        },
+    ];
+
+    const formatHeadingTools: FormatHeadingTools[] = [
+        {
+            name: 'h1',
+            icon: <PiTextHOneBold />,
+        },
+        {
+            name: 'h2',
+            icon: <PiTextHTwoBold />,
+        },
+        {
+            name: 'h3',
+            icon: <PiTextHThreeBold />,
+        },
+    ];
+
     return (
         <div className='toolbar' ref={toolbarRef}>
             <button
@@ -204,118 +288,53 @@ export const ToolbarPlugin: FC = () => {
                 <LiaRedoAltSolid />
             </button>
             <Divider />
-            <button
-                onClick={() => {
-                    editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'bold');
-                }}
-                className={'toolbar-item spaced ' + (isBold ? 'active' : '')}
-                aria-label='Format Bold'
-            >
-                <PiTextBBold />
-            </button>
-            <button
-                onClick={() => {
-                    editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'italic');
-                }}
-                className={'toolbar-item spaced ' + (isItalic ? 'active' : '')}
-                aria-label='Format Italics'
-            >
-                <PiTextItalicBold />
-            </button>
-            <button
-                onClick={() => {
-                    editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'underline');
-                }}
-                className={'toolbar-item spaced '
-                    + (isUnderline ? 'active' : '')}
-                aria-label='Format Underline'
-            >
-                <PiTextUnderlineBold />
-            </button>
-            <button
-                onClick={() => {
-                    editor.dispatchCommand(
-                        FORMAT_TEXT_COMMAND,
-                        'strikethrough',
-                    );
-                }}
-                className={'toolbar-item spaced '
-                    + (isStrikethrough ? 'active' : '')}
-                aria-label='Format Strikethrough'
-            >
-                <PiTextStrikethroughBold />
-            </button>
+            {formatTextTools.map((textTool) => (
+                <button
+                    key={textTool.name}
+                    onClick={() => {
+                        editor.dispatchCommand(
+                            FORMAT_TEXT_COMMAND,
+                            textTool.name,
+                        );
+                    }}
+                    className={'toolbar-item spaced '
+                        + (textTool.state ? 'active' : '')}
+                    aria-label={`Format ${textTool.name}`}
+                >
+                    {textTool.icon}
+                </button>
+            ))}
             <Divider />
-            <button
-                onClick={() => {
-                    editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, 'left');
-                }}
-                className='toolbar-item spaced'
-                aria-label='Left Align'
-            >
-                <RxTextAlignLeft />
-            </button>
-            <button
-                onClick={() => {
-                    editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, 'center');
-                }}
-                className='toolbar-item spaced'
-                aria-label='Center Align'
-            >
-                <RxTextAlignCenter />
-            </button>
-            <button
-                onClick={() => {
-                    editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, 'right');
-                }}
-                className='toolbar-item spaced'
-                aria-label='Right Align'
-            >
-                <RxTextAlignLeft />
-            </button>
-            <button
-                onClick={() => {
-                    editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, 'justify');
-                }}
-                className='toolbar-item'
-                aria-label='Justify Align'
-            >
-                <RxTextAlignJustify />
-            </button>{' '}
+            {formatAlignTools.map((alignTool) => (
+                <button
+                    key={alignTool.name}
+                    onClick={() => {
+                        editor.dispatchCommand(
+                            FORMAT_ELEMENT_COMMAND,
+                            alignTool.name,
+                        );
+                    }}
+                    className='toolbar-item spaced'
+                    aria-label={`${alignTool.name} Align`}
+                >
+                    {alignTool.icon}
+                </button>
+            ))}
             <Divider />
-            <button
-                role='checkbox'
-                onClick={() => formatHeading('h1')}
-                className={`toolbar-item spaced ${
-                    blockType === 'h1' ? 'active' : ''
-                }`}
-                aria-label='heading-1'
-                aria-checked={blockType === 'h1'}
-            >
-                <PiTextHOneBold />
-            </button>
-            <button
-                role='checkbox'
-                onClick={() => formatHeading('h2')}
-                className={`toolbar-item spaced ${
-                    blockType === 'h2' ? 'active' : ''
-                }`}
-                aria-label='heading-2'
-                aria-checked={blockType === 'h2'}
-            >
-                <PiTextHTwoBold />
-            </button>
-            <button
-                role='checkbox'
-                onClick={() => formatHeading('h3')}
-                className={`toolbar-item spaced ${
-                    blockType === 'h3' ? 'active' : ''
-                }`}
-                aria-label='heading-3'
-                aria-checked={blockType === 'h3'}
-            >
-                <PiTextHThreeBold />
-            </button>
+            {formatHeadingTools.map((headingTool) => (
+                <button
+                    key={headingTool.name}
+                    role='checkbox'
+                    onClick={() => formatHeading(headingTool.name)}
+                    className={`toolbar-item spaced ${
+                        blockType === headingTool.name ? 'active' : ''
+                    }`}
+                    aria-label='heading-1'
+                    aria-checked={blockType === headingTool.name}
+                >
+                    {headingTool.icon}
+                </button>
+            ))}
             <Divider />
             <button
                 onClick={() => {
