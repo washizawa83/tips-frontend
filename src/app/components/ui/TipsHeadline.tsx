@@ -6,7 +6,7 @@ type HeadlineProps = {
     text: string;
 };
 
-export const HeadlineComponent = ({ text }: HeadlineProps) => {
+export const TipsHeadline = ({ text }: HeadlineProps) => {
     return (
         <Box sx={{ margin: '50px 0' }}>
             <Box

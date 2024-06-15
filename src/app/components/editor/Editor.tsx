@@ -24,7 +24,7 @@ type EditorProps = {
     postData: (postData: string) => void;
 };
 
-export const EditorComponent = (
+export const Editor = (
     { editable, initialEditorText, postData }: EditorProps,
 ) => {
     const initialEditorConfig = {

@@ -16,7 +16,7 @@ const styles = {
     },
 };
 
-export const ThreeColumnListComponent = ({ children }: Props) => {
+export const TipsThreeColumnList = ({ children }: Props) => {
     return (
         <Box sx={styles}>
             {children}

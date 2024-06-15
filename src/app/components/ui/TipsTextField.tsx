@@ -6,7 +6,7 @@ type BaseTextFieldProps = {
     width?: number;
 };
 
-export const TextFieldComponent = ({ label, width }: BaseTextFieldProps) => {
+export const TipsTextField = ({ label, width }: BaseTextFieldProps) => {
     const textFieldStyle = {
         maxWidth: width ? width : '100%',
         width: '100%',

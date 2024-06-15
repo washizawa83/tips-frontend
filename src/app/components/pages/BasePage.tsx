@@ -7,7 +7,7 @@ type Props = {
 
 const contentWidth = 800;
 
-export const BasePageComponent = ({ children }: Props) => {
+export const BasePage = ({ children }: Props) => {
     return (
         <Box sx={{ maxWidth: `${contentWidth}px`, margin: '0 auto' }}>
             {children}

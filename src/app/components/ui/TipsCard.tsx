@@ -8,7 +8,7 @@ type CardProps = {
     children?: ReactNode;
 };
 
-export const CardComponent = ({ title, image, children }: CardProps) => {
+export const TipsCard = ({ title, image, children }: CardProps) => {
     return (
         <Card
             sx={{

@@ -1,10 +1,10 @@
 import { Box, Typography } from '@mui/material';
 import React from 'react';
 import { theme } from '../../themes/theme';
-import { CardComponent } from '../ui/CardComponent';
-import { HeadlineComponent } from '../ui/HeadlineComponent';
-import { ThreeColumnListComponent } from '../ui/ThreeColumnListComponent';
-import { BasePageComponent } from './BasePageComponent';
+import { TipsCard } from '../ui/TipsCard';
+import { TipsHeadline } from '../ui/TipsHeadline';
+import { TipsThreeColumnList } from '../ui/TipsThreeColumnList';
+import { BasePage } from './BasePage';
 
 const tags = [
     {
@@ -41,12 +41,12 @@ const tags = [
 
 export const HomePageComponent = () => {
     return (
-        <BasePageComponent>
-            <HeadlineComponent text='Tags' />
-            <ThreeColumnListComponent>
+        <BasePage>
+            <TipsHeadline text='Tags' />
+            <TipsThreeColumnList>
                 {tags.map((tag) => (
                     <Box sx={{ margin: '20px 0', width: '30%' }}>
-                        <CardComponent
+                        <TipsCard
                             title={tag.name}
                             image={tag.image}
                         >
@@ -59,10 +59,10 @@ export const HomePageComponent = () => {
                             >
                                 {`tips: ${tag.tips}`}
                             </Typography>
-                        </CardComponent>
+                        </TipsCard>
                     </Box>
                 ))}
-            </ThreeColumnListComponent>
-        </BasePageComponent>
+            </TipsThreeColumnList>
+        </BasePage>
     );
 };
