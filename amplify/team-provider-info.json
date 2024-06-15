@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-tipsfrontend-dev-4a2ee-authRole",
+      "UnauthRoleArn": "arn:aws:iam::936964319394:role/amplify-tipsfrontend-dev-4a2ee-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::936964319394:role/amplify-tipsfrontend-dev-4a2ee-authRole",
+      "Region": "ap-northeast-1",
+      "DeploymentBucketName": "amplify-tipsfrontend-dev-4a2ee-deployment",
+      "UnauthRoleName": "amplify-tipsfrontend-dev-4a2ee-unauthRole",
+      "StackName": "amplify-tipsfrontend-dev-4a2ee",
+      "StackId": "arn:aws:cloudformation:ap-northeast-1:936964319394:stack/amplify-tipsfrontend-dev-4a2ee/858a7410-2b31-11ef-bb97-0e0b771595c9",
+      "AmplifyAppId": "d3783fse23safc"
+    },
+    "categories": {
+      "auth": {
+        "tipsfrontend5e17ab12": {}
+      }
+    }
+  }
+}
