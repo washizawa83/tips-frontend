@@ -2,13 +2,13 @@ import { TextField } from '@mui/material';
 import React from 'react';
 
 type BaseTextFieldProps = {
-    width: number;
     label: string;
+    width?: number;
 };
 
-export const TextFieldComponent = ({ width, label }: BaseTextFieldProps) => {
+export const TipsTextField = ({ label, width }: BaseTextFieldProps) => {
     const textFieldStyle = {
-        maxWidth: width,
+        maxWidth: width ? width : '100%',
         width: '100%',
         '& .MuiInputBase-input': {
             color: '#e0d8f5',

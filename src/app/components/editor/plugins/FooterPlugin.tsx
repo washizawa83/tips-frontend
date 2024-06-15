@@ -2,7 +2,7 @@ import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext
 import SendIcon from '@mui/icons-material/Send';
 import { Box, IconButton } from '@mui/material';
 import { FC } from 'react';
-import { TextFieldComponent } from '../../ui/TextFieldComponent';
+import { TipsTextField } from '../../ui/TipsTextField';
 
 function downloadJSON(data: string, filename = 'data.json') {
     const blob = new Blob([data], { type: 'application/json' });
@@ -17,7 +17,11 @@ function downloadJSON(data: string, filename = 'data.json') {
     URL.revokeObjectURL(url);
 }
 
-export const FooterPlugin: FC = () => {
+type Props = {
+    handlePostData: (postData: string) => void;
+};
+
+export const FooterPlugin: FC<Props> = ({ handlePostData }: Props) => {
     const [editor] = useLexicalComposerContext();
 
     const postTips = () => {
@@ -29,7 +33,7 @@ export const FooterPlugin: FC = () => {
         console.log(parseEditorState);
 
         const jsonString = JSON.stringify(editorState.toJSON());
-        downloadJSON(jsonString);
+        handlePostData(jsonString);
     };
 
     return (
@@ -41,7 +45,7 @@ export const FooterPlugin: FC = () => {
                 padding: '20px',
             }}
         >
-            <TextFieldComponent width={300} label='Tags' />
+            <TipsTextField width={300} label='Tags' />
             <IconButton aria-label='delete' onClick={() => postTips()}>
                 <SendIcon sx={{ fontSize: 20, color: '#c3b0fa' }} />
             </IconButton>

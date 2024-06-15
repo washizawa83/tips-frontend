@@ -1,14 +1,14 @@
 import { Card, CardContent, CardMedia, Typography } from '@mui/material';
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { theme } from '../../themes/theme';
 
 type CardProps = {
     title: string;
-    tips: number;
     image?: string;
+    children?: ReactNode;
 };
 
-export const CardComponent = ({ title, tips, image }: CardProps) => {
+export const TipsCard = ({ title, image, children }: CardProps) => {
     return (
         <Card
             sx={{
@@ -34,15 +34,7 @@ export const CardComponent = ({ title, tips, image }: CardProps) => {
                 >
                     {title}
                 </Typography>
-                <Typography
-                    color={theme.palette.primary.contrastText}
-                    gutterBottom
-                    variant='h6'
-                    component='div'
-                    sx={{ fontSize: '14px' }}
-                >
-                    {`tips: ${tips}`}
-                </Typography>
+                {children}
             </CardContent>
         </Card>
     );
