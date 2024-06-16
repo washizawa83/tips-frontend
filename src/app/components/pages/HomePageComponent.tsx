@@ -41,11 +41,11 @@ const tags = [
 
 export const HomePageComponent = () => {
     return (
-        <BasePage>
+        <BasePage allowAuthenticate={true}>
             <TipsHeadline text='Tags' />
             <TipsThreeColumnList>
                 {tags.map((tag) => (
-                    <Box sx={{ margin: '20px 0', width: '30%' }}>
+                    <Box key={tag.name} sx={{ margin: '20px 0', width: '30%' }}>
                         <TipsCard
                             title={tag.name}
                             image={tag.image}
