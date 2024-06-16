@@ -1,3 +1,4 @@
+import { useAuthenticator } from '@aws-amplify/ui-react';
 import LogoutIcon from '@mui/icons-material/Logout';
 import MenuIcon from '@mui/icons-material/Menu';
 import NotificationsIcon from '@mui/icons-material/Notifications';
@@ -35,6 +36,7 @@ type HeaderProps = {
 };
 
 export const Header = (props: HeaderProps) => {
+    const { user, signOut } = useAuthenticator((context) => [context.user]);
     const onClickMenuButton = () => props.openSidebarEmit();
     return (
         <Box sx={{ backgroundColor: theme.palette.primary.light }}>
@@ -51,11 +53,21 @@ export const Header = (props: HeaderProps) => {
                                     key={index}
                                     sx={{ marginLeft: 2, whiteSpace: 'nowrap' }}
                                 >
-                                    <TipsAnchorLink
+                                    {
+                                        /* <TipsAnchorLink
                                         text={props.text}
                                         link={props.link}
                                         icon={props.icon}
-                                    />
+                                    /> */
+                                    }
+                                    <IconButton
+                                        color='inherit'
+                                        aria-label='open drawer'
+                                        edge='start'
+                                        onClick={() => signOut()}
+                                    >
+                                        {props.icon}
+                                    </IconButton>
                                 </ListItem>
                             ))}
                         </List>

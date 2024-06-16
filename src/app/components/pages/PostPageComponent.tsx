@@ -13,7 +13,7 @@ export const PostPageComponent = () => {
         setTips([...tips, newData]);
     };
     return (
-        <BasePage>
+        <BasePage allowAuthenticate={true}>
             <Editor editable={true} postData={postData} />
             <Box sx={{ margin: '80px 0 60px' }}>
                 <TipsTextField label='Search' />

@@ -1,5 +1,9 @@
+import { Amplify } from 'aws-amplify';
+import '@aws-amplify/ui-react/styles.css';
 import React from 'react';
+import config from './amplifyconfiguration.json';
 import './App.css';
+import { Authenticator } from '@aws-amplify/ui-react';
 import { Box } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -8,23 +12,30 @@ import { HomePageComponent } from './app/components/pages/HomePageComponent';
 import { PostPageComponent } from './app/components/pages/PostPageComponent';
 import { theme } from './app/themes/theme';
 
+Amplify.configure(config);
+
 function App() {
     return (
-        <Box className='min-w-full max-w-full min-h-screen max-h-screen'>
-            <ThemeProvider theme={theme}>
-                <BrowserRouter>
-                    <Layout>
-                        <Routes>
-                            <Route path='/' element={<HomePageComponent />} />
-                            <Route
-                                path='/post'
-                                element={<PostPageComponent />}
-                            />
-                        </Routes>
-                    </Layout>
-                </BrowserRouter>
-            </ThemeProvider>
-        </Box>
+        <Authenticator.Provider>
+            <Box className='min-w-full max-w-full min-h-screen max-h-screen'>
+                <ThemeProvider theme={theme}>
+                    <BrowserRouter>
+                        <Layout>
+                            <Routes>
+                                <Route
+                                    path='/'
+                                    element={<HomePageComponent />}
+                                />
+                                <Route
+                                    path='/post'
+                                    element={<PostPageComponent />}
+                                />
+                            </Routes>
+                        </Layout>
+                    </BrowserRouter>
+                </ThemeProvider>
+            </Box>
+        </Authenticator.Provider>
     );
 }
 
